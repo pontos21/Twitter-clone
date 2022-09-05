@@ -11,9 +11,9 @@ function TweetBox() {
             <div className="tweetBox__input">
                 <Avatar src="./src/future goal.jpg" />
                 <input placeholder='Whats happening' type='text' />
-                {/* <input placeholder='Enter image URL' type='text' /> */}
             </div>
-            <Button>Tweet</Button>
+            <input className='tweetBox__imageInput' placeholder='Optional: Enter image URL' type='text' />
+            <Button className='tweetBox__tweetButton'>Tweet</Button>
         </form>
     </div>
   )
