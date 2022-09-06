@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material'
-import React from 'react'
+import React, { forwardRef } from 'react'
 import './Post.css'
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
@@ -7,36 +7,31 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PublishIcon from '@mui/icons-material/Publish';
 
-function Post({
-    displayName,
-    username,
-    verified,
-    text,
-    image,
-    avatar
-}) {
+const Post = forwardRef(
+    ({ displayName, username, verified, text, image, avatar }, ref) =>
+
+{
   return (
-    <div className='post'>
+    <div className='post' ref={ref}>
         <div className='post__avatar'>
-            <Avatar src="./src/future goal.jpg" />
+            <Avatar src={avatar} />
         </div>
         <div className='post__body'>
             <div className='post__header'>
                 <div className='post__headerText'>
                     <h3>
-                        Paul <span className='post__headerSpecial'>
-                          <VerifiedUserIcon className='post__badge' />
-                          @pontos  
+                       {displayName} {" "} <span className='post__headerSpecial'>
+                          {verified && <VerifiedUserIcon className='post__badge' />}
+                          @{username}
                         </span>
                         
                     </h3>
                 </div>
                 <div className='post__headerDescription'>
-                    <p>Build Twitter clone</p>
+                    <p>{text}</p>
                 </div>
             </div>
-            <img src="">
-            </img>
+            <img src={image} alt=""></img>
             <div className='post__footer'>
                 <ChatBubbleIcon fontSize='small' />
                 <RepeatIcon fontSize='small'/>
@@ -46,6 +41,6 @@ function Post({
         </div>
     </div>
   )
-}
+})
 
 export default Post
